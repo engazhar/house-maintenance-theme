@@ -14,7 +14,16 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
-    <header>
-        Header
-    </header>
+    <?php 
+        if( function_exists('wp_body_open')){
+            wp_body_open();
+        }
+    ?>
+    <div class="main-theme-site">
+        <header id="theme-header" class="site-header" role="banner">
+            <?php get_template_part('template-parts/header/nav') ?>
+        </header>
+        <div id="theme-content" class="container-fluid">
+            
+        </div>
+    </div>
