@@ -11,3 +11,8 @@ Version: 1.0
 Text Domain: house-repair
 This theme, like WordPress, is licensed under the GPL.
 */
+
+img{
+    width: 100%;
+    height: auto;
+}

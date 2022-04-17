@@ -15,7 +15,7 @@ if(!defined('HRAM_DIR_URI')){
 
 
 require_once HRAM_DIR_PATH. '/inc/helpers/autoloader.php';
-
+require_once HRAM_DIR_PATH. '/inc/helpers/template-tags.php';
 function hram_get_theme_instance(){
     \HRAM_THEME\Inc\HRAM_THEME::get_instance();
 }
