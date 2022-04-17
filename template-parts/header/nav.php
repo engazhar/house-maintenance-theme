@@ -9,8 +9,8 @@ $header_menu_items = wp_get_nav_menu_items($header_menu_id);
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand logo" href="#">
+  <div class="container">
+    <div class="navbar-brand logo">
       <?php
 
         if ( function_exists( 'the_custom_logo' ) ) {
@@ -18,7 +18,7 @@ $header_menu_items = wp_get_nav_menu_items($header_menu_id);
         }
 
       ?>
-    </a>
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
