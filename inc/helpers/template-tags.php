@@ -91,5 +91,15 @@ function custom_post_excerpt( $trim_char_count = 0 ){
     $excerpt = substr($excerpt, 0, $trim_char_count);
     $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
 
-    echo $excerpt . "...."; 
+    echo $excerpt . "..."; 
+}
+
+function post_excerpt_more( $more='' ){
+    if( ! is_single()){
+        $more = sprintf('<a class="mt-4 btn btn-info" href="%1$s">%2$s</a>',
+            get_the_permalink(get_the_ID()),
+            __('Read more', 'house-repair')
+        );
+    }
+    echo $more;
 }

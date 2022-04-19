@@ -21,12 +21,13 @@
                             ]
                         ],
 
-                    ),the_title( '<span class="screen-reader-text">', '<span>', false )
+                    ),the_title( '<span class="screen-reader-text">', '</span>', false )
 
                 ),
             );
         }else{
             custom_post_excerpt();
+            post_excerpt_more();
         }
     ?>
 </div>
