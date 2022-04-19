@@ -19,3 +19,7 @@ img{
 .nav-item:hover .dropdown-menu:not(.show){
     display:block;
 }
+.btn-blog-tags{
+    font-size: 10px !important;
+    border-radius: 0 !important;;
+}
