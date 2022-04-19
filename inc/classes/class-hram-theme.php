@@ -16,7 +16,7 @@ class HRAM_THEME {
         //Autoload classes
         Assets::get_instance();
         Menus::get_instance();
-
+        Meta_Boxes::get_instance();
         $this->setup_hooks();
     }
     protected function setup_hooks(){
@@ -39,9 +39,14 @@ class HRAM_THEME {
         ] );
         add_theme_support( 'custom-background', [
             'default-color' => '#fff',
-            'default-image' => ''
+            'default-image' => '',
+            'default-repeat' => 'none'
         ] );
         add_theme_support( 'post-thumbnails', ['post', 'page']);
+        /**
+         * Register Image Size
+         */
+        add_image_size( 'featured-thumbnail', 350, 233, true );
         add_theme_support( 'customize-selective-refresh-widgets' );
         add_theme_support( 'automatic-feed-links' );
         add_theme_support( 

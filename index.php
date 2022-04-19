@@ -10,12 +10,12 @@
 
 
 <div class="container">
-    <div class="row mt-3">
+    <div class="row mt-3 d-flex flex-row justify-content-center align-items-center">
         <?php
             if( have_posts() ):
                 if(is_home() && ! is_front_page()){
                     ?>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 mb-5">
                         <h1 class="page-title"><?php single_post_title() ?></h1>
                     </div>
                     <?php
