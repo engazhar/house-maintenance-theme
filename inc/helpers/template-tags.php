@@ -38,3 +38,46 @@ function max_post_title_length( $title ) {
         return $title;
     }
 }
+
+
+function post_posted_by() {
+	$byline = sprintf(
+		esc_html_x( ' by %s', 'post author', 'house-repair' ),
+		'<span class="author vcard"><a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	);
+
+	echo '<span class="byline text-secondary">' . $byline . '</span>';
+}
+
+
+function post_posted_date(){
+    $year                        = get_the_date( 'Y' );
+	$month                       = get_the_date( 'n' );
+	$day                         = get_the_date( 'j' );
+	$post_date_archive_permalink = get_day_link( $year, $month, $day );
+
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
+	// Post is modified ( when post published time is not equal to post modified time )
+	if ( get_the_date() === get_the_modified_date() ) {
+		$time_string = '<time class="updated" datetime="%1$s">%2$s</time>';
+        $time_string = sprintf( $time_string,
+            esc_attr( get_the_date( DATE_W3C ) ),
+            esc_attr( get_the_date() ),
+	    );
+        $update_or_post = 'Posted';
+	}else{
+        $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
+        $time_string = sprintf( $time_string,
+            esc_attr( get_the_modified_date( DATE_W3C ) ),
+            esc_attr( get_the_modified_date() )
+        );
+        $update_or_post = 'Updated'; 
+    }
+    $posted_on = sprintf(
+        esc_html_x( $update_or_post.' on: %s', 'post date', 'house-repair' ),
+        '<a href="' . esc_url( $post_date_archive_permalink ) . '" rel="bookmark">' . $time_string . '</a>'
+    );
+
+	echo '<span class="posted-on text-secondary">' . $posted_on . '</span>';
+}

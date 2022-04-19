@@ -15,7 +15,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $post_id );
     <?php
         if($has_post_thumbnail){
             ?>
-                <div class="entry-image">
+                <div class="entry-image mb-3">
                 <a href="<?php echo esc_url(get_permalink()) ?>" rel="bookmark">
                     <?php the_post_custom_thumbnail(
                         $post_id,
@@ -27,7 +27,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $post_id );
                     ); ?>
                 </a>
                 </div>
-                <div class="entry-title">
+                <div class="entry-title mb-3">
                     <?php
                         if( is_single() && is_page()){
                             printf(
@@ -38,7 +38,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $post_id );
                         }else{
                             $post_title = max_post_title_length(get_the_title());
                             printf(
-                                '<h5 class="page-title mt-3"><a href="%1$s">%2$s</a></h5>', 
+                                '<h5 class="page-title"><a href="%1$s">%2$s</a></h5>', 
                                 esc_url(get_the_permalink()),
                                 wp_kses_post($post_title)
                             );
