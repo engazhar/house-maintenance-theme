@@ -8,7 +8,7 @@
 
 $post_id = get_the_ID();
 $hide_title = get_post_meta( $post_id, '_hide_page_title', true );
-$heading_class = ! empty($hide_title) && 'yes' === $hide_title ? 'hide' : '';
+$heading_class = ! empty($hide_title) && 'yes' === $hide_title ? 'd-none' : '';
 $has_post_thumbnail = get_the_post_thumbnail( $post_id );
 ?>
  <header class="entry-header">
@@ -50,7 +50,7 @@ $has_post_thumbnail = get_the_post_thumbnail( $post_id );
                         if( is_single() || is_page()){
                             printf(
                                 '<h1 class="text-dark page-title %1$s">%2$s</h1>', 
-                                esc_url($heading_class),
+                                esc_attr($heading_class),
                                 wp_kses_post(get_the_title())
                             );
                         }else{

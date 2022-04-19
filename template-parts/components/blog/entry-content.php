@@ -25,9 +25,15 @@
 
                 ),
             );
+            wp_link_pages( [
+                'before' => '<div class="page-links">'.esc_html__('Pages:', 'house-repair' ).'</div>',
+                'after' => '</div>',
+            ] );
         }else{
             custom_post_excerpt();
             post_excerpt_more();
         }
+
+        
     ?>
 </div>
