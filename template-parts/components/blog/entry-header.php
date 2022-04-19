@@ -16,20 +16,38 @@ $has_post_thumbnail = get_the_post_thumbnail( $post_id );
         if($has_post_thumbnail){
             ?>
                 <div class="entry-image mb-3">
-                <a href="<?php echo esc_url(get_permalink()) ?>" rel="bookmark">
-                    <?php the_post_custom_thumbnail(
-                        $post_id,
-                        'featured-thumbnail',
-                        [
-                            'sizes' => '(max-width: 350px) 350px, 233px',
-                            'class' => 'attachment featured-thumbnail img-thumbnail'
-                        ]
-                    ); ?>
-                </a>
+                    <?php
+                        if( is_single() || is_page()){
+                            the_post_custom_thumbnail(
+                                $post_id,
+                                'featured-thumbnail',
+                                [
+                                    'sizes' => '(max-width: 350px) 350px, 233px',
+                                    'class' => 'attachment post-single-image img-thumbnail'
+                                ]
+                            ); 
+                    ?>
+                        
+                        <?php
+                        }else{
+                           ?>
+                           <a href="<?php echo esc_url(get_permalink()) ?>" rel="bookmark">
+                            <?php the_post_custom_thumbnail(
+                                $post_id,
+                                'featured-thumbnail',
+                                [
+                                    'sizes' => '(max-width: 350px) 350px, 233px',
+                                    'class' => 'attachment post-featured-thumbnail img-thumbnail'
+                                ]
+                            ); ?>
+                        </a>
+                           <?php
+                        }
+                    ?>
                 </div>
                 <div class="entry-title mb-3">
                     <?php
-                        if( is_single() && is_page()){
+                        if( is_single() || is_page()){
                             printf(
                                 '<h1 class="text-dark page-title %1$s">%2$s</h1>', 
                                 esc_url($heading_class),

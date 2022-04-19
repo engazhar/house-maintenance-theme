@@ -58,7 +58,7 @@ function post_posted_date(){
 
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
-	// Post is modified ( when post published time is not equal to post modified time )
+	// Post is modified to Update ( when post published date is not equal to post modified time )
 	if ( get_the_date() === get_the_modified_date() ) {
 		$time_string = '<time class="updated" datetime="%1$s">%2$s</time>';
         $time_string = sprintf( $time_string,
