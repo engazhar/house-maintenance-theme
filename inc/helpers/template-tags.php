@@ -103,3 +103,78 @@ function post_excerpt_more( $more='' ){
     }
     echo $more;
 }
+/**
+ * Display Post pagination with prev next, first last, to, from
+ *
+ * @param $current_page_no
+ * @param $posts_per_page
+ * @param $article_query
+ * @param $first_page_url
+ * @param $last_page_url
+ * @param bool $is_query_param_structure
+ */
+function theme_the_post_pagination( $current_page_no, $posts_per_page, $article_query, $first_page_url, $last_page_url, bool $is_query_param_structure = true ) {
+	$prev_posts = ( $current_page_no - 1 ) * $posts_per_page;
+	$from       = 1 + $prev_posts;
+	$to         = count( $article_query->posts ) + $prev_posts;
+	$of         = $article_query->found_posts;
+	$total_pages = $article_query->max_num_pages;
+
+	$base = ! empty( $is_query_param_structure ) ? add_query_arg( 'page', '%#%' ) :  get_pagenum_link( 1 ) . '%_%';
+	$format = ! empty( $is_query_param_structure ) ? '?page=%#%' : 'page/%#%';
+
+	?>
+	<div class="mt-0 md:mt-10 mb-10 lg:my-5 flex items-center justify-end posts-navigation">
+		<?php
+		if ( 1 < $total_pages && !empty( $first_page_url ) ) {
+			printf(
+				'<span class="mr-2">Showing %1$s - %2$s Of %3$s</span>',
+				$from,
+				$to,
+				$of
+			);
+		}
+
+
+		// First Page
+		if ( 1 !== $current_page_no && ! empty( $first_page_url ) ) {
+			printf( '<a class="first-pagination-link btn border border-secondary mr-2" href="%1$s" title="first-pagination-link">%2$s</a>', esc_url( $first_page_url ), __( 'First', 'aquila' ) );
+		}
+
+		echo paginate_links( [
+			'base'      => $base,
+			'format'    => $format,
+			'current'   => $current_page_no,
+			'total'     => $total_pages,
+			'prev_text' => __( 'Prev', 'aquila' ),
+			'next_text' => __( 'Next', 'aquila' ),
+		] );
+
+		// Last Page
+		if ( $current_page_no < $total_pages && !empty( $last_page_url ) ) {
+
+			printf( '<a class="last-pagination-link btn border border-secondary ml-2" href="%1$s" title="last-pagination-link">%2$s</a>', esc_url( $last_page_url ), __( 'Last', 'aquila' ) );
+		}
+
+		?>
+	</div>
+	<?php
+}
+function pagination_bar() {
+    global $wp_query;
+ 
+    $total_pages = $wp_query->max_num_pages;
+ 
+    if ($total_pages > 1){
+        $current_page = max(1, get_query_var('paged'));
+ 
+        echo paginate_links(array(
+            'base' => get_pagenum_link(1) . '%_%',
+            'format' => '/page/%#%',
+            'current' => $current_page,
+            'total' => $total_pages,
+            'before_page_number' => '',
+            'after_page_number' => '',
+        ));
+    }
+}

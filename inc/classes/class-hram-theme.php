@@ -17,6 +17,7 @@ class HRAM_THEME {
         Assets::get_instance();
         Menus::get_instance();
         Meta_Boxes::get_instance();
+        SideBars::get_instance();
         $this->setup_hooks();
     }
     protected function setup_hooks(){

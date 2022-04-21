@@ -30,8 +30,10 @@
             else:
                 get_template_part('template-parts/content-none'); 
             endif;
-
         ?>
+    </div>
+    <div class="d-flex flex-row justify-content-center align-items-center">
+     <?php pagination_bar(); ?>
     </div>
 </div>
 

@@ -16,7 +16,7 @@ if( empty($article_terms) || ! is_array($article_terms)){
 
 
 <div class="entry-footer mt-4">
-    <p class='mb-2 fw-bold'><?php echo esc_html__('Tags & Categories:', 'house-repair') ?></p>
+    <p class='mb-2 fwg-bold'><?php echo esc_html__('Tags & Categories:', 'house-repair') ?></p>
     <?php
         foreach($article_terms as $key => $article_term){
             ?>
