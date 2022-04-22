@@ -10,9 +10,9 @@
 
 
 <div class="container">
-    <div class="row mt-3 d-flex flex-row justify-content-center align-items-center">
+    <div class="row mt-3 ">
         
-        <div class="col-lg-12">
+        <div class="col-lg-8 col-md-8 col-sm-12">
             <?php
                 if( have_posts() ):
                     if(is_home() && ! is_front_page()){
@@ -30,6 +30,10 @@
                 endif;
                 posts_nav_link();
             ?>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+                <?php get_sidebar(); ?>
         </div>
         
         <div class="col-lg-6 col-md-6 col-sm-6 text-center mb-4">
