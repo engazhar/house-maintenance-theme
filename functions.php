@@ -11,6 +11,25 @@ if(!defined('HRAM_DIR_PATH')){
 if(!defined('HRAM_DIR_URI')){
     define('HRAM_DIR_URI', untrailingslashit(get_template_directory_uri()));
 }
+if(!defined('HRAM_BUILD_URI')){
+    define('HRAM_BUILD_URI', untrailingslashit(get_template_directory_uri().'/assets/build'));
+}
+if(!defined('HRAM_BUILD_JS_URI')){
+    define('HRAM_BUILD_JS_URI', untrailingslashit(get_template_directory_uri().'/assets/build/js'));
+}
+if(!defined('HRAM_BUILD_JS_DIR_PATH')){
+    define('HRAM_BUILD_JS_DIR_PATH', untrailingslashit(get_template_directory().'/assets/build/js'));
+}
+if(!defined('HRAM_BUILD_IMG_URI')){
+    define('HRAM_BUILD_IMG_URI', untrailingslashit(get_template_directory_uri().'/assets/build/src/img'));
+}
+if(!defined('HRAM_BUILD_CSS_URI')){
+    define('HRAM_BUILD_CSS_URI', untrailingslashit(get_template_directory_uri().'/assets/build/css'));
+}
+if(!defined('HRAM_BUILD_CSS_DIR_PATH')){
+    define('HRAM_BUILD_CSS_DIR_PATH', untrailingslashit(get_template_directory().'/assets/build/css'));
+}
+
 
 
 

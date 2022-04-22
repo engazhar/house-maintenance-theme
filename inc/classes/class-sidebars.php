@@ -7,7 +7,7 @@
 
 namespace HRAM_THEME\Inc;
 use HRAM_THEME\Inc\Traits\Singleton;
-use HRAM_THEME\Inc\SocialIcons;
+
 
 class SideBars{
     use Singleton;
@@ -23,6 +23,7 @@ class SideBars{
         // Actions
         add_action('widgets_init', [$this, 'register_sidebars']);
         //add_action('widgets_init', [$this, 'register_social_widget']);
+        add_action('widgets_init', [$this, 'register_clock_widget']);
     }
 
     public function register_sidebars(){
@@ -48,5 +49,8 @@ class SideBars{
 
     public function register_social_widget(){
         register_widget( '\HRAM_THEME\Inc\Social_Widget' );
+    }
+    public function register_clock_widget(){
+        register_widget( '\HRAM_THEME\Inc\Clock_Widget' );
     }
 }

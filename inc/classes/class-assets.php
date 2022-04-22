@@ -22,6 +22,9 @@ class Assets{
         // Actions
         add_action('wp_enqueue_scripts', [$this, 'register_style']);
         add_action('wp_enqueue_scripts', [$this, 'register_scripts']);
+
+        //Hooks
+        add_filter('script_loader_tag', [$this, 'add_type_attribute'] , 10, 3);
     }
 
     public function register_style(){
@@ -36,11 +39,20 @@ class Assets{
 
     public function register_scripts(){
         // Register Scripts
-        wp_register_script('theme-main', HRAM_DIR_URI . '/assets/main.js', ['jquery'], filemtime(HRAM_DIR_PATH . '//assets/src/js/main.js'), true);
+        wp_register_script('theme-main', HRAM_BUILD_JS_URI . '/main.js', ['jquery'], filemtime(HRAM_BUILD_JS_DIR_PATH . '/main.js'), true);
         wp_register_script('bootstrap-jquery', HRAM_DIR_URI . '/assets/src/library/js/bootstrap.min.js', [ 'jquery' ], false, true);
         
         // Enqueue Scripts
         wp_enqueue_script('theme-main');
         wp_enqueue_script('bootstrap-jquery');
+    }
+    public function add_type_attribute($tag, $handle, $src) {
+        // if not your script, do nothing and return original $tag
+        if ( 'theme-main' !== $handle ) {
+            return $tag;
+        }
+        // change the script tag by adding type="module" and return it.
+        $tag = '<script type="module" src="' . esc_url( $src ) . '"></script>';
+        return $tag;
     }
 }
